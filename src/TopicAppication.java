@@ -97,13 +97,14 @@ public class TopicAppication {
             PreparedStatement statement = connection.prepareStatement(selectById);
             statement.setInt(1,id);
             ResultSet resultSet = statement.executeQuery();
-            List<Topic> topics = new ArrayList<>();
+            Topic topic = new Topic();
             while (resultSet.next()){
-                String name = resultSet.getString("name");
-                String description = resultSet.getString("description");
-                topics.add(new Topic(id,name,description));
+                topic.setId(resultSet.getInt("id"));
+                topic.setName(resultSet.getString("name"));
+                topic.setDescription(resultSet.getString("description"));
+                topic.setStatus(resultSet.getBoolean("status"));
             }
-            topics.forEach(System.out::println);
+            System.out.println(topic);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -114,13 +115,14 @@ public class TopicAppication {
             PreparedStatement statement = connection.prepareStatement(selectByName);
             statement.setString(1, name);
             ResultSet resultSet = statement.executeQuery();
-            List<Topic> topics = new ArrayList<>();
+            Topic topic = new Topic();
             while (resultSet.next()){
-                Integer id = resultSet.getInt("id");
-                String description = resultSet.getString("description");
-                topics.add(new Topic(id,name,description));
+                topic.setId(resultSet.getInt("id"));
+                topic.setName(resultSet.getString("name"));
+                topic.setDescription(resultSet.getString("description"));
+                topic.setStatus(resultSet.getBoolean("status"));
             }
-            topics.forEach(System.out::println);
+            System.out.println(topic);
         } catch (SQLException e) {
             e.printStackTrace();
         }

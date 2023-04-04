@@ -31,14 +31,13 @@ public class Main {
                 case 5->{
                     System.out.print("Select By ID : ");
                     Integer id1 = scanner.nextInt();
+                    System.out.println(id1);
                     TopicAppication.selectID(id1);
-                    System.exit(0);
                 }
                 case 6->{
-                    String name = null;
                     System.out.println("Select By Name : ");
                     scanner.nextLine();
-                    name = scanner.nextLine();
+                    String name = scanner.nextLine();
                     TopicAppication.selectName(name);
 
                 }
